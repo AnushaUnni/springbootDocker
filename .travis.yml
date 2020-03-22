@@ -6,14 +6,20 @@ services:
   - docker
   - mysql
 
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+
+dist: trusty
+
 before_install:
   - docker pull openjdk:8-jdk-alpine
 
 before_script:
-  - mysql -u root -e "CREATE DATABASE auth;"
-  - mysql -u root -e "CREATE USER 'localroot'@'192.168.1.6' IDENTIFIED BY 'localroot';"
-  - mysql -u root -e "GRANT ALL ON auth.* TO 'localroot'@'192.168.1.6';"
-  - mysql -u root -e "FLUSH PRIVILEGES;"
+  - mysql -e 'create database auth if not exists;'
 
 script:
   - mvn test
