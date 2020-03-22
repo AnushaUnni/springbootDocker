@@ -9,6 +9,12 @@ services:
 before_install:
   - docker pull openjdk:8-jdk-alpine
 
+before_script:
+  - mysql -u root -e "CREATE DATABASE auth;"
+  - mysql -u root -e "CREATE USER 'localroot'@'localhost' IDENTIFIED BY 'localroot';"
+  - mysql -u root -e "GRANT ALL ON auth.* TO 'localroot'@'localhost';"
+  - mysql -u root -e "FLUSH PRIVILEGES;"
+
 script:
   - mvn test
   - mvn clean package
