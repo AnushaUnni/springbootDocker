@@ -11,8 +11,8 @@ before_install:
 
 before_script:
   - mysql -u root -e "CREATE DATABASE auth;"
-  - mysql -u root -e "CREATE USER 'localroot'@'localhost' IDENTIFIED BY 'localroot';"
-  - mysql -u root -e "GRANT ALL ON auth.* TO 'localroot'@'localhost';"
+  - mysql -u root -e "CREATE USER 'localroot'@'192.168.1.6' IDENTIFIED BY 'localroot';"
+  - mysql -u root -e "GRANT ALL ON auth.* TO 'localroot'@'192.168.1.6';"
   - mysql -u root -e "FLUSH PRIVILEGES;"
 
 script:
