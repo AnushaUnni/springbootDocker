@@ -11,3 +11,6 @@ before_install:
 script:
   - mvn test
   - mvn clean package
+
+after_script:
+  - docker-compose up --build
