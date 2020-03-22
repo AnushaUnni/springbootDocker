@@ -1,0 +1,53 @@
+version: '3'
+services:
+  spring-boot-jpa-app:
+    image: spring-boot-jpa-image
+    build:
+      context: ./simple
+      dockerfile: Dockerfile.dev
+    ports:
+      - 9001:9000
+    volumes:
+      - .:/appVolume
+#SQL properties in properties and not in docker file will run the application
+#But properties in dockerfile and not in properties will not make application up
+#And it would consider only properties file
+
+#So removing the dependency of mysql in docker file
+#mysql-app:
+    #image: mysql:latest
+    #network_mode: "service:spring-boot-jpa-app"
+    #environment:
+      #- MYSQL_ROOT_PASSWORD=root
+      #- MYSQL_DATABASE=auth
+      #- MYSQL_USER=localroot
+      #- MYSQL_PASSWORD=localroot1
+      #- MYSQL_HOST=localhost
+      #- MYSQL_PORT=3306
+      #ports:
+      #- "8080:8080"
+      #volumes:
+      #- /data/mysql
+
+#To create volumes, u require access to system
+  #volumes:
+      #- .:/appVolume  - all the current folder in host would be inside appVolume folder.
+#If prod
+ # nginx:
+    #container_name: v-nginx
+    #image: nginx:1.13
+    #restart: always
+    #ports:
+      #- 80:80
+      #- 443:443
+    #volumes:
+      #- ./nginx/conf.d:/etc/nginx/conf.d
+  #spring-boot-jpa-app:
+    #image: spring-boot-jpa-image
+    #build:
+      #context: ./simple
+      #dockerfile: Dockerfile.prod
+    #volumes:
+      #- .:/appVolume
+    #depends_on:
+      #- nginx
