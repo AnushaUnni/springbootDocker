@@ -6,24 +6,22 @@ services:
   - docker
   - mysql
 
-addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
-
-dist: trusty
-
 before_install:
   - docker pull openjdk:8-jdk-alpine
-
-before_script:
-  - mysql -e 'create database auth if not exists;'
 
 script:
   - mvn test
   - mvn clean package
 
-after_script:
-  - docker-compose up --build
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "springbootdockermodule"
+  env: "Springbootdockermodule-env"
+  bucket_name: "elasticbeanstalk-us-east-2-300813874739"
+  bucket_path: "springbootdockermodule"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
