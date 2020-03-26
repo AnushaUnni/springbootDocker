@@ -21,4 +21,3 @@ LABEL maintainer="anushaunni.auau@gmail.com"
 EXPOSE 9000
 # Run the jar file
 ENTRYPOINT ["java","-jar","simple.jar"]
-
