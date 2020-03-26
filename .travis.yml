@@ -20,7 +20,6 @@ deploy:
   env: "Springbootmultimoduledocker-env"
   bucket_name: "elasticbeanstalk-us-east-2-300813874739"
   bucket_path: "springbootmultimoduledocker"
-  edge: true # opt in to dpl v2
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
