@@ -1,11 +1,23 @@
 version: '3'
 services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '3000:80'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
   spring-boot-jpa-app:
     image: spring-boot-jpa-image
     build:
       context: ./simple
       dockerfile: Dockerfile
     ports:
-      - 9001:9000
+      - '9001:9000'
     volumes:
       - .:/appVolume
+    depends_on:
+      - nginx
+

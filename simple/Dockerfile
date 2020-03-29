@@ -18,6 +18,6 @@ LABEL maintainer="anushaunni.auau@gmail.com"
 # Add a volume pointing to /tmp
 #VOLUME /tmp
 # Make port 9001 available to the world outside this container
-EXPOSE 9000
+EXPOSE 9001
 # Run the jar file
 ENTRYPOINT ["java","-jar","simple.jar"]
