@@ -13,14 +13,11 @@ script:
   - mvn test
   - mvn clean package
 
-deploy:
-  provider: elasticbeanstalk
-  region: "us-east-2"
-  app: "springbootmultimoduledocker"
-  env: "Springbootmultimoduledocker-env"
-  bucket_name: "elasticbeanstalk-us-east-2-300813874739"
-  bucket_path: "springbootmultimoduledocker"
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+after_success:
+  - docker build -t anushaunni/springboot_module ./simple
+  - docker build -t anushaunni/nginx_module ./nginx
+  #Login into docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take the images and push to docker hub
+  - docker push springboot_module
+  - docker push nginx_module
