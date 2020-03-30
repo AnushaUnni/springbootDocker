@@ -19,5 +19,5 @@ after_success:
   #Login into docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take the images and push to docker hub
-  - docker push springboot_module
-  - docker push nginx_module
+  - docker push anushaunni/springboot_module
+  - docker push anushaunni/nginx_module
