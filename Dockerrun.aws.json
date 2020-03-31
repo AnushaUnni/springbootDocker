@@ -4,7 +4,7 @@
     "name": "springbootmodule",
     "image": "anushaunni/springboot_module",
     "hostname": "springbootmodule",
-    "essential": false,
+    "essential": true,
     "memory": 128,
     "portMappings": [{
       "hostPort": 9000,
