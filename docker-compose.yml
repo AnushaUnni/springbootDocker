@@ -8,7 +8,7 @@ services:
     ports:
       - '3000:80'
     volumes:
-      - ./nginx:/etc/nginx/conf.d
+      - ./nginx:/etc/nginx/app.conf
   spring-boot-jpa-app:
     image: spring-boot-jpa-image
     build:
@@ -18,10 +18,6 @@ services:
       - '9001:9000'
     volumes:
       - .:/appVolume
-    environment:
-      - DATABASE_URL = jdbc:mysql://10.0.75.1:3306/auth
-      - DATABASE_USER = localroot
-      - DATABASE_PASSWORD = localroot
     depends_on:
       - nginx
 
