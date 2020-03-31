@@ -15,7 +15,7 @@
       "name": "nginxmodule",
       "image": "anushaunni/nginx_module",
       "hostname": "nginxmodule",
-      "essential": true,
+      "essential": false,
       "memory": 128,
       "portMappings": [{
         "hostPort": 3000,
