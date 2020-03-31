@@ -16,6 +16,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - '9001:9000'
+    environment:
+      - DATABASE_URL=jdbc:mysql://10.149.232.147:3306/auth
+      - DATABASE_USER=localroot
+      - DATABASE_PASSWORD=localroot
     volumes:
       - .:/appVolume
     depends_on:
