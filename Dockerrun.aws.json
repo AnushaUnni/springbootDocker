@@ -5,6 +5,7 @@
     "image": "anushaunni/springboot_module",
     "hostname": "springbootmodule",
     "essential": false,
+    "memory": 128,
     "portMappings": [{
       "hostPort": 9000,
       "containerPort": 9001
@@ -15,6 +16,7 @@
       "image": "anushaunni/nginx_module",
       "hostname": "nginxmodule",
       "essential": true,
+      "memory": 128,
       "portMappings": [{
         "hostPort": 3000,
         "containerPort": 80
