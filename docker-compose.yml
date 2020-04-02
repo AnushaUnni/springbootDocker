@@ -17,7 +17,7 @@ services:
     ports:
       - '9001:9000'
     environment:
-      - DATABASE_URL=jdbc:mysql://10.149.233.18:3306/auth
+      - DATABASE_URL=jdbc:mysql://10.149.235.212:3306/auth
       - DATABASE_USER=localroot
       - DATABASE_PASSWORD=localroot
     volumes:
