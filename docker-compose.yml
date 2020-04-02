@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - '3000:80'
+      - '3001:80'
     volumes:
       - ./nginx:/etc/nginx/app.conf
   spring-boot-jpa-app:
@@ -24,4 +24,3 @@ services:
       - .:/appVolume
     depends_on:
       - nginx
-
