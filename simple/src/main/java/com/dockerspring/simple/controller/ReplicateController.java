@@ -12,7 +12,7 @@ public class ReplicateController {
 
     @GetMapping(value="/{name}")
     public ResponseEntity welcomeMessage(@PathVariable("name") String name) {
-        String response = "Welcome " + name;
+        String response = "Hello, Welcome " + name;
         return ResponseEntity.ok(response);
     }
 }
